@@ -1,0 +1,25 @@
+#if !defined(__CLIENT_H__)
+#define __CLIENT_H__
+
+/**
+ * @brief Modelisation of a client 
+ * @author Nicolas CIBULKA
+ * @since Thu Sep 08 2022
+ */
+class Client{
+
+    private:
+
+    double _arrivalTime;
+
+    public : 
+    
+    Client(double arrivalTime);
+
+    ~Client();
+
+    double ArrivalTime();
+};
+
+#endif // __CLIENT_H__
+
