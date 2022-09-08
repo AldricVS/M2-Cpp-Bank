@@ -1,12 +1,15 @@
 #if !defined(__WAITINGLIST_H__)
 #define __WAITINGLIST_H__
 #include "Client.h"
+#include <list>
+
+using namespace std;
 
 class WaitingList{
 
     private:
 
-    // TODO
+    list<Client> _clientList;
     
     public:
 
