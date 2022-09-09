@@ -1,21 +1,25 @@
 #if !defined(__WAITINGLIST_H__)
 #define __WAITINGLIST_H__
+
+#include <queue>
+
 #include "Client.h"
-#include <list>
 
-using namespace std;
 
-class WaitingList{
+class WaitingList
+{
 
-    private:
+private:
 
-    list<Client> _clientList;
-    
-    public:
+    std::queue<Client*> _queue;
+
+public:
 
     WaitingList();
 
     ~WaitingList();
+
+    // TODO : copy constructor, = & == overriding
 
     double averageLength();
 
@@ -27,7 +31,7 @@ class WaitingList{
 
     bool isEmpty();
 
-    Client removeFirst();
+    Client* removeFirst();
 };
 
 #endif // __WAITINGLIST_H__

@@ -2,20 +2,18 @@
 #define __CLIENT_H__
 
 /**
- * @brief Modelisation of a client 
+ * @brief Modelisation of a client
  * @author Nicolas CIBULKA
  * @since Thu Sep 08 2022
  */
-class Client{
+class Client
+{
 
-    private:
-
+private:
     double _arrivalTime;
 
-    public : 
-    
+public:
     Client(double arrivalTime);
-
     ~Client();
 
     double ArrivalTime();

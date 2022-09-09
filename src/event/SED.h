@@ -1,6 +1,8 @@
 #if !defined(__SED_H__)
 #define __SED_H__
 
+#include <set>
+
 #include "Event.h"
 
 /**
@@ -8,11 +10,12 @@
  * @author Nicolas CIBULKA
  * @since Thu Sep 08 2022
  */
-class SED{
+class SED
+{
+private:
+    std::set<Event*> _eventSet;
 
-    private:
-
-    public:
+public:
 
     SED();
 
@@ -29,13 +32,13 @@ class SED{
      * @brief Execute the simulation
      * @return (void)
      */
-    void run();
+    virtual void run();
 
     /**
      * @brief Get the simulation time
-     * @return 
+     * @return
      */
-    double hour();
+    virtual double hour();
 
 };
 

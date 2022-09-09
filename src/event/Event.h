@@ -1,17 +1,18 @@
 #if !defined(__EVENT_H__)
 #define __EVENT_H__
 
-class Event{
+class Event
+{
+private:
+    double _hour;
 
-    private:
-
-    public:
+public:
 
     Event();
 
     ~Event();
 
-    void execute();
+    virtual void execute();
 
     double hour();
 

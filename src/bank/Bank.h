@@ -1,18 +1,23 @@
 #if !defined(__BANK_H__)
 #define __BANK_H__
 
+#include <list>
+
 #include "Cashier.h"
 #include "WaitingList.h"
-#include "SED.h"
+#include "../event/SED.h"
 
 /**
  * @brief Class that represent the Bank
- * @author 
+ * @author
  * @since Thu Sep 08 2022
  */
-class Bank : public SED{
+class Bank : public SED
+{
 
-    private:
+private:
+
+    std::list<Cashier*> _cashierList;
 
     int _nbCashier;
 
@@ -22,9 +27,9 @@ class Bank : public SED{
 
     WaitingList _waitingList;
 
-    public:
+public:
 
-    Bank(int nbCashier, double estimatedLength, double* cashierServiceTime, double averageArrivalTime);
+    Bank(int nbCashier, double estimatedLength, std::list<double> cashierServiceTimes, double averageArrivalTime);
 
     ~Bank();
 
@@ -41,5 +46,7 @@ class Bank : public SED{
     Cashier* firstFree();
 
 };
+
+// TODO créer une exception si le nombre de fichiers est pas valide
 
 #endif // __BANK_H__

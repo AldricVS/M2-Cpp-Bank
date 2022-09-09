@@ -8,18 +8,18 @@
  * @author Nicolas CIBULKA
  * @since Thu Sep 08 2022
  */
-class Cashier{
+class Cashier
+{
 
-    private:
-
+private:
     double _averageServiceTime;
 
+    /// @brief Can be null.
     Client* client;
 
-    public:
+public:
 
     Cashier(double averageServiceTime);
-
     ~Cashier();
 
     double averageServiceTime();
