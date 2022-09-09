@@ -15,17 +15,19 @@ class Cashier
 private:
     Bank* _bank;
     double _averageServiceTime;
+    int _nbClientsServed;
+    double _workingTime;
 
     /// @brief Can be null.
-    Client* client;
+    Client* _client;
 
 public:
 
     Cashier(Bank& bank, double averageServiceTime);
 
-    double averageServiceTime();
+    double averageServiceTime() const;
 
-    int nbClients();
+    int nbClients() const;
 
     double OccupationRate();
 
