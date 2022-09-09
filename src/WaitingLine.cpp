@@ -5,18 +5,17 @@ WaitingLine::WaitingLine(Bank& bank) : _bank(&bank)
 
 double WaitingLine::averageLength()
 {
-    // double nbSteps = (double) _lengthPerStep.size();
-    // double 
+    return _sumLengthPerStep / _stepCount;
 }
 
 double WaitingLine::maximumLength()
 {
-    
+    return _maximumLength;
 }
 
 double WaitingLine::averageWaitingTime()
 {
-    
+    return _totalWaitingTime / _bank->nbClients();
 }
 
 void WaitingLine::addClient(Client& client)
