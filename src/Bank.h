@@ -17,7 +17,7 @@ class Bank : public SED
 
 private:
 
-    std::list<Cashier*> _cashierList;
+    Cashier** _cashiers;
 
     int _nbCashier;
 
@@ -32,8 +32,11 @@ private:
 public:
 
     Bank(int nbCashier, double estimatedLength, std::list<double> cashierServiceTimes, double averageArrivalTime);
-
+    Bank(Bank& bank);
     ~Bank();
+
+    Bank& operator=(const Bank& other);
+    bool operator==(const Bank& other);
 
     double estimatedLength();
 
