@@ -1,7 +1,7 @@
-#if !defined(__EVENT_H__)
+#ifndef __EVENT_H__
 #define __EVENT_H__
 
-#include "SED.h"
+class SED;
 
 /**
  * @brief This class represents all the events that can happen during a SED simulation
@@ -17,7 +17,6 @@ private:
 public:
 
     Event(SED& sed, double hour);
-
     ~Event();
 
     /**
@@ -34,5 +33,6 @@ public:
     double hour() const;
 
 };
+
 
 #endif // __EVENT_H__

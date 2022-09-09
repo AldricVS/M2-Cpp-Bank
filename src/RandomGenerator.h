@@ -8,13 +8,15 @@
  */
 class RandomGenerator
 {
+private:
 public:
     RandomGenerator();
+    ~RandomGenerator();
 
     /**
      * Returns the next number of the state in the double format.
      */
-    virtual double nextDouble();
+    virtual double nextDouble() = 0;
 };
 
 #endif // __RANDOMGENERATOR_H__

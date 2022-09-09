@@ -1,5 +1,5 @@
-#if !defined(__ARRIVALEVENT_H__)
-#define __ARRIVALEVENT_H__
+#ifndef __CLIENTARRIVAL_H__
+#define __CLIENTARRIVAL_H__
 
 #include "Bank.h"
 #include "Event.h"
@@ -22,4 +22,5 @@ public:
 
 };
 
-#endif // __ARRIVALEVENT_H__
+
+#endif // __CLIENTARRIVAL_H__

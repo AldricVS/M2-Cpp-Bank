@@ -1,13 +1,12 @@
-#if !defined(__WAITINGLIST_H__)
-#define __WAITINGLIST_H__
+#ifndef __WAITINGLINE_H__
+#define __WAITINGLINE_H__
 
 #include <queue>
 #include <list>
 
-#include "Bank.h"
 #include "Client.h"
 
-
+class Bank;
 
 /**
  * @brief The lin
@@ -48,6 +47,7 @@ private:
 public:
 
     WaitingLine(Bank& bank);
+    ~WaitingLine();
 
     /**
      * Compute the average length from all the previous lengths over each step
@@ -81,6 +81,6 @@ public:
     Client* removeFirst();
 };
 
-#endif // __WAITINGLIST_H__
 
 
+#endif // __WAITINGLINE_H__

@@ -1,4 +1,4 @@
-#if !defined(__BANK_H__)
+#ifndef __BANK_H__
 #define __BANK_H__
 
 #include <list>
@@ -43,12 +43,24 @@ public:
     Bank& operator=(const Bank& other);
     bool operator==(const Bank& other);
 
+    /**
+     * Getter for the "estimatedLength" input
+     */
     double estimatedLength() const;
 
+    /**
+     * Getter for the "nbCashier" input
+     */
     int nbCashier() const;
 
+    /**
+     * Getter for the "average arrival time" input
+     */
     double timeBetweenArrival() const;
 
+    /**
+     * 
+     */
     double realLength() const;
 
     int nbClients() const;
@@ -66,5 +78,6 @@ public:
 };
 
 // TODO créer une exception si le nombre de fichiers est pas valide
+
 
 #endif // __BANK_H__

@@ -1,35 +1,50 @@
-# Run doxygen on the src file and create a symlink of the 
-# "index.html" in the "doc" directory
-doc:
-	doxygen Doxyfile
-	ln -s -f "$(PWD)/doc/html/index.html" "$(PWD)/doc"
-# Always regenerate the documentation
-.PHONY: doc
+CC = g++
+CFLAGS = -Wall
+EXEC_NAME = main
+INCLUDES = $(wildcard src/*.h)
+LIBS =
+OBJ_FILES = Bank.o Cashier.o Client.o ClientArrival.o ClientDeparture.o Event.o PoissonRandomGenerator.o SED.o WaitingLine.o
+INSTALL_DIR = ./bin
 
-
-SRC_DIR = src
-BANK_DIR = $(SRC_DIR)/bank
-EVENT_DIR = $(SRC_DIR)/event
-
-VPATH = $(SRC_DIR)
-BUILD_DIR = build
-
-BANK_OBJ = Bank.o Cashier.o Client.o WaitingList.o
-EVENT_OBJ = ClientArrival.o ClientDeparture.o Event.h SED.h
-
-Bank.o: $(BANK_DIR)/Bank.h $(BANK_DIR)/Cashier.h $(BANK_DIR)/WaitingList.h src/event/SED.h
-Cashier.o: $(BANK_DIR)/Cashier.h $(BANK_DIR)/Client.h $(BANK_DIR)/Bank.h
-Client.o: $(BANK_DIR)/Client.h $(BANK_DIR)/Client.cpp
-WaitingList.o: $(BANK_DIR)/WaitingList.h $(BANK_DIR)/Client.h $(BANK_DIR)/Bank.h
-
-SED.o: $(EVENT_DIR)/SED.h $(EVENT_DIR)/Event.h
-Event.o: $(EVENT_DIR)/Event.h $(EVENT_DIR)/SED.h
-ClientArrival: $(BANK_DIR)/Bank.h $(BANK_DIR)/Cashier.h $(BANK_DIR)/Client.h $(EVENT_DIR)/Event.h $(EVENT_DIR)/SED.h
-ClientDeparture: $(BANK_DIR)/Bank.h $(EVENT_DIR)/Event.h $(EVENT_DIR)/SED.h
-
-tLaunch: $(BANK_OBJ) test/tLaunch.cpp
-	g++ -o tLaunch $(BANK_OBJ) test/tLaunch.cpp
-
+all : $(EXEC_NAME)
 
 clean :
-	rm ./src/*.o
+	rm $(EXEC_NAME) $(OBJ_FILES)
+
+$(OBJ_FILES): $(INCLUDES)
+
+$(EXEC_NAME) : $(OBJ_FILES)
+	$(CC) -o $(EXEC_NAME) $(OBJ_FILES) src/main.cpp
+
+%.o: src/%.cpp
+	$(CC) $(CFLAGS) -o $@ -c $< 
+
+%.o: %.cc
+	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
+
+%.o: %.c
+	gcc $(CFLAGS) $(INCLUDES) -o $@ -c $<
+
+install :
+	cp $(EXEC_NAME) $(INSTALL_DIR)
+
+
+# SRC_DIR = src
+# BUILD_DIR = build
+
+# OBJ = Bank.o Cashier.o Client.o ClientArrival.o ClientDeparture.o Event.o PoissonRandomGenerator.o SED.o WaitingLine.o
+
+# HEADERS = $(wildcard $(SRC_DIR)/*.h)
+
+# $(OBJ): $(HEADERS)
+
+# $(BUILD_DIR)/%.cpp.o: %.cpp
+# 	mkdir $(dir $@)
+# 	g++ -c $< -o $@
+
+# main: $(OBJ)
+# 	g++ -o bin/main $(OBJ)
+
+# info:
+# 	@echo "[*] Headers dir:      ${HEADERS}     "
+# 	@echo "[*] Objects:         ${OBJ}     "

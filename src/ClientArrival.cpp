@@ -9,9 +9,7 @@ ClientArrival::ClientArrival(Bank& bank, double hour) : Event(bank, hour)
 }
 
 ClientArrival::~ClientArrival()
-{
-    
-}
+{}
 
 void ClientArrival::execute()
 {

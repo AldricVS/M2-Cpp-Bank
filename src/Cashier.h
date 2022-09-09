@@ -1,9 +1,10 @@
-#if !defined(__CASHIER_H__)
+#ifndef __CASHIER_H__
 #define __CASHIER_H__
 
-#include "Bank.h"
 #include "Client.h"
 #include "PoissonRandomGenerator.h"
+
+class Bank;
 
 /**
  * @brief Modelisation of a Cashier that will serve clients during a defined average service time.
@@ -20,13 +21,13 @@ private:
     double _workingTime;
     PoissonRandomGenerator _randomGenerator;
 
-
     /// @brief Can be null.
     Client* _client;
 
 public:
 
     Cashier(Bank& bank, double averageServiceTime);
+    ~Cashier();
 
     double averageServiceTime() const;
 
@@ -40,5 +41,6 @@ public:
 
     void wait();
 };
+
 
 #endif // __CASHIER_H__

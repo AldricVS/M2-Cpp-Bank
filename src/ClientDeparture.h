@@ -1,4 +1,4 @@
-#if !defined(__CLIENTDEPARTURE_H__)
+#ifndef __CLIENTDEPARTURE_H__
 #define __CLIENTDEPARTURE_H__
 
 #include "Bank.h"
@@ -17,7 +17,6 @@ private:
 public:
 
     ClientDeparture(Bank& bank, double hour, Client& client, Cashier& cashier);
-
     ~ClientDeparture();
 
     void execute();

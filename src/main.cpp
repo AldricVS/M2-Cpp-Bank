@@ -1,5 +1,10 @@
+
+#include "Bank.h"
+
+#include "ClientArrival.h"
+
 int main(int argc, char const *argv[])
 {
-    /* code */
+    
     return 0;
 }

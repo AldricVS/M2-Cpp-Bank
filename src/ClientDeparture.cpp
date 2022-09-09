@@ -7,9 +7,7 @@ ClientDeparture::ClientDeparture( Bank& bank, double hour, Client& client, Cashi
 }
 
 ClientDeparture::~ClientDeparture()
-{
-    
-}
+{}
 
 void ClientDeparture::execute()
 {

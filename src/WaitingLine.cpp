@@ -1,6 +1,11 @@
 #include "WaitingLine.h"
 
+#include "Bank.h"
+
 WaitingLine::WaitingLine(Bank& bank) : _bank(&bank)
+{}
+
+WaitingLine::~WaitingLine()
 {}
 
 double WaitingLine::averageLength()

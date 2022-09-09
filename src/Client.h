@@ -1,4 +1,4 @@
-#if !defined(__CLIENT_H__)
+#ifndef __CLIENT_H__
 #define __CLIENT_H__
 
 /**
@@ -19,5 +19,6 @@ public:
     double arrivalTime();
 };
 
-#endif // __CLIENT_H__
 
+
+#endif // __CLIENT_H__

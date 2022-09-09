@@ -11,6 +11,9 @@ Cashier::Cashier(Bank& bank, double averageServiceTime): _randomGenerator(averag
     
 }
 
+Cashier::~Cashier()
+{}
+
 double Cashier::averageServiceTime() const
 {
     return _averageServiceTime;

@@ -13,7 +13,7 @@ Bank::Bank(int nbCashier, double estimatedLength, std::list<double> cashierServi
 
 Bank::Bank(Bank& bank):
     _waitingLine(bank._waitingLine),
-    _arrivalTimeGenerator(bank._arrivalTimeGenerator)
+    _arrivalTimeGenerator(bank._averageArrivalTime)
 {
     _nbCashier = bank._nbCashier;
     _estimatedLength = bank._estimatedLength;
@@ -49,11 +49,6 @@ bool Bank::operator==(const Bank& other)
     if (this == &other)
     {
         return true;
-    }
-
-    if (&other == nullptr)
-    {
-        return false;
     }
 
     return _nbCashier == other._nbCashier
