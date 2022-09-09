@@ -16,7 +16,7 @@ public:
     Client(double arrivalTime);
     ~Client();
 
-    double ArrivalTime();
+    double arrivalTime();
 };
 
 #endif // __CLIENT_H__

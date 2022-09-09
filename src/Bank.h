@@ -4,7 +4,7 @@
 #include <list>
 
 #include "Cashier.h"
-#include "WaitingList.h"
+#include "WaitingLine.h"
 #include "SED.h"
 
 /**
@@ -27,7 +27,7 @@ private:
 
     double _averageArrivalTime;
 
-    WaitingList _waitingList;
+    WaitingLine _waitingLine;
 
 public:
 

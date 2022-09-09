@@ -22,7 +22,6 @@ private:
 public:
 
     Cashier(Bank& bank, double averageServiceTime);
-    ~Cashier();
 
     double averageServiceTime();
 
