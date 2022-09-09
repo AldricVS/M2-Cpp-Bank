@@ -8,9 +8,10 @@
 #include "SED.h"
 
 /**
- * @brief Class that represent the Bank
+ * @brief The root of the simulation. This contains all methods relative to a bank and it's mechanics.
  * @author
  * @since Thu Sep 08 2022
+ * @see SED
  */
 class Bank : public SED
 {
@@ -38,21 +39,23 @@ public:
     Bank& operator=(const Bank& other);
     bool operator==(const Bank& other);
 
-    double estimatedLength();
+    double estimatedLength() const;
 
-    int nbCashier();
+    int nbCashier() const;
 
-    double timeBetweenArrival();
+    double timeBetweenArrival() const;
 
-    double realLength();
+    double realLength() const;
 
-    int nbClients();
+    int nbClients() const;
+
+    WaitingLine& waitingLine();
 
     Cashier* firstFree();
 
-    void addToLine(Client *client);
+    void addToLine(Client* client);
 
-    Client& getWaitingClient();
+    Client* getWaitingClient();
 
 };
 

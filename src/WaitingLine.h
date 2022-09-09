@@ -40,6 +40,11 @@ private:
      */
     int _stepCount = 0.0;
 
+    /**
+     * Update the average and maximum length of the queue.
+     */
+    void updateLengthAttributes();
+
 public:
 
     WaitingLine(Bank& bank);
@@ -66,7 +71,12 @@ public:
     bool isEmpty();
 
     /**
-     * Returns the first client on the queue or null if the queue is empty.
+     * Remove and returns the first client on the queue or null if the queue is empty.
+     * 
+     * If the queue was not empty, this operation will trigger a new step, 
+     * so the average length will be altered.
+     * 
+     * Moreover, removing a client will also alter the total and average waiting time.
      */
     Client* removeFirst();
 };
