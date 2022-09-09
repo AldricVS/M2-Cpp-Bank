@@ -20,7 +20,7 @@ void ClientDeparture::execute()
         _cashier->wait();
     }
     else{
-        Client* newClient = &(_bank->getWaitingClient());
+        Client* newClient = _bank->getWaitingClient();
         _cashier->serve(newClient);
     }
 }

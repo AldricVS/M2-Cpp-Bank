@@ -35,7 +35,7 @@ void Cashier::serve(Client* client)
 {
     _client = client;
     double servingTime = _randomGenerator.nextDouble();
-    ClientDeparture* newEvent = new ClientDeparture(*_bank, servingTime, *_client, *this); 
+    ClientDeparture* newEvent = new ClientDeparture(*_bank, client->arrivalTime() + servingTime, *_client, *this); 
     _workingTime +=servingTime;
     _bank->add(*newEvent);
 
