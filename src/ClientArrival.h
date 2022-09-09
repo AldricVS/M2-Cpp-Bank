@@ -11,9 +11,13 @@ private:
 
 public:
 
-    ClientArrival(double hour, Bank& bank);
+    ClientArrival(Bank& bank, double hour);
     ~ClientArrival();
 
+    /**
+     * @brief Create a cashier and manage it in the bank depending if a Cashier is free
+     * @return (void)
+     */
     void execute();
 
 };

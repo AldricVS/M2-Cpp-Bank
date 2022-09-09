@@ -3,6 +3,11 @@
 
 #include "SED.h"
 
+/**
+ * @brief This class represents all the events that can happen during a SED simulation
+ * @author 
+ * @since Fri Sep 09 2022
+ */
 class Event
 {
 private:
@@ -11,12 +16,21 @@ private:
 
 public:
 
-    Event(SED& sed);
+    Event(SED& sed, double hour);
 
     ~Event();
 
-    virtual void execute();
+    /**
+     * @brief launch the scenario corresponding to the event we created. 
+     * @param 
+     * @return 
+     */
+    virtual void execute() = 0;
 
+    /**
+     * @brief get the hour of the event
+     * @return 
+     */
     double hour();
 
 };

@@ -16,7 +16,7 @@ private:
 
 public:
 
-    ClientDeparture(double hour, Bank& bank, Client& client, Cashier& cashier);
+    ClientDeparture(Bank& bank, double hour, Client& client, Cashier& cashier);
 
     ~ClientDeparture();
 

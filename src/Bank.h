@@ -47,6 +47,8 @@ public:
 
     Cashier* firstFree();
 
+    void addToLine(Client *client);
+
 };
 
 // TODO créer une exception si le nombre de fichiers est pas valide
