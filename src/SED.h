@@ -20,7 +20,7 @@ class EventComparator{
      * @param event2
      * @return bool - true if event1 arrive after event2, false if not
      */
-    bool operator()(const Event* event1, const Event* event2);
+    bool operator()(const Event* event1, const Event* event2) const;
 };
 
 /**

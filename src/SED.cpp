@@ -14,7 +14,7 @@ void SED::add(Event& event){
 }
 
 
-bool EventComparator::operator()(const Event* event1, const Event* event2)
+bool EventComparator::operator()(const Event* event1, const Event* event2) const
 {
     return (event1->hour() > event2->hour());
 }
