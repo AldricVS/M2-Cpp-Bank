@@ -49,6 +49,8 @@ public:
 
     void addToLine(Client *client);
 
+    Client& getWaitingClient();
+
 };
 
 // TODO créer une exception si le nombre de fichiers est pas valide
