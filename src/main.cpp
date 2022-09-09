@@ -1,9 +1,9 @@
 
 #include "Bank.h"
 
-#include "ClientArrival.h"
+#include "Input.h"
 
-int main(int argc, char const *argv[])
+int main(int argc, char *argv[])
 {
     
     return 0;

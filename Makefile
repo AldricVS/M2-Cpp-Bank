@@ -1,59 +1,35 @@
-# ==== DOXYGEN ====
-doc:
-	doxygen Doxyfile
-	ln -s -f "$(PWD)/doc/html/index.html" "$(PWD)/doc"
-# Always recompile doc
-.PHONY: doc
 
-# ==== COMPILATION ====
-CC = g++
-CFLAGS = -Wall
-EXEC_NAME = main
-INCLUDES = $(wildcard src/*.h)
-LIBS =
-OBJ_FILES = Bank.o Cashier.o Client.o ClientArrival.o ClientDeparture.o Event.o \
-	PoissonRandomGenerator.o RandomGenerator.o SED.o WaitingLine.o
-INSTALL_DIR = ./bin
+TARGET_EXEC ?= main
 
-all : $(EXEC_NAME)
+BIN_DIR ?= ./bin
+BUILD_DIR ?= ./build
+SRC_DIRS ?= ./src
 
-clean :
-	rm $(EXEC_NAME) $(OBJ_FILES)
+SRCS := $(shell find $(SRC_DIRS) -name *.cpp -or -name *.c -or -name *.s)
+OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
+DEPS := $(OBJS:.o=.d)
 
-$(OBJ_FILES): $(INCLUDES)
+INC_DIRS := $(shell find $(SRC_DIRS) -type d)
+INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
-$(EXEC_NAME) : $(OBJ_FILES)
-	$(CC) -o $(EXEC_NAME) $(OBJ_FILES) src/main.cpp
+CPPFLAGS ?= $(INC_FLAGS) -MMD -MP
 
-%.o: src/%.cpp
-	$(CC) $(CFLAGS) -o $@ -c $< 
+$(BIN_DIR)/$(TARGET_EXEC): $(OBJS) create_folders
+	g++ $(OBJS) -o $@ $(LDFLAGS)
 
-%.o: %.cc
-	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
+$(BUILD_DIR)/%.cpp.o: %.cpp
+	mkdir $(dir $@)
+	g++ $(CPPFLAGS) -c $< -o $@
 
-%.o: %.c
-	gcc $(CFLAGS) $(INCLUDES) -o $@ -c $<
+create_folders:
+	mkdir -p $(BIN_DIR)
+	mkdir -p $(BUILD_DIR)
 
-install :
-	cp $(EXEC_NAME) $(INSTALL_DIR)
+.PHONY: clean
 
+clean:
+	$(RM) -r $(BUILD_DIR)
 
-# SRC_DIR = src
-# BUILD_DIR = build
+-include $(DEPS)
 
-# OBJ = Bank.o Cashier.o Client.o ClientArrival.o ClientDeparture.o Event.o PoissonRandomGenerator.o SED.o WaitingLine.o
-
-# HEADERS = $(wildcard $(SRC_DIR)/*.h)
-
-# $(OBJ): $(HEADERS)
-
-# $(BUILD_DIR)/%.cpp.o: %.cpp
-# 	mkdir $(dir $@)
-# 	g++ -c $< -o $@
-
-# main: $(OBJ)
-# 	g++ -o bin/main $(OBJ)
-
-# info:
-# 	@echo "[*] Headers dir:      ${HEADERS}     "
-# 	@echo "[*] Objects:         ${OBJ}     "
+MKDIR_P ?= mkdir -p
