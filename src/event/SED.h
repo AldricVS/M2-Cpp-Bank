@@ -25,7 +25,7 @@ class EventComparator{
 
 /**
  * @brief This class represent a discrete-event simulation
- * @author Nicolas CIBULKA
+ * @author
  * @since Thu Sep 08 2022
  */
 class SED

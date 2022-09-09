@@ -1,9 +1,9 @@
 #ifndef __CLIENTDEPARTURE_H__
 #define __CLIENTDEPARTURE_H__
 
-#include "Bank.h"
-#include "Client.h"
-#include "Cashier.h"
+#include "../bank/Bank.h"
+#include "../bank/Client.h"
+#include "../bank/Cashier.h"
 #include "Event.h"
 
 class ClientDeparture : public Event

@@ -1,5 +1,5 @@
 #include "Cashier.h"
-#include "ClientDeparture.h"
+#include "../event/ClientDeparture.h"
 
 Cashier::Cashier(Bank& bank, double averageServiceTime): _randomGenerator(averageServiceTime)
 {

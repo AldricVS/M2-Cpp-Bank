@@ -1,5 +1,5 @@
-#ifndef __INPUTRETRIEVER_H__
-#define __INPUTRETRIEVER_H__
+#ifndef __INPUT_H__
+#define __INPUT_H__
 
 #include <list>
 #include <stdexcept>
@@ -23,19 +23,8 @@ public:
 };
 
 /**
- * @brief Abstract class responsible for retrieving the user input and sending errors otherwise
- * @author 
- * @since Fri Sep 09 2022
+ * Retrieve the user input. The type of retrieval depends on what the user provided as arguments with the process call.
  */
-class InputRetriever
-{
-public:
-    
-    /**
-     * Retrieve what the user want to set for the simulation.
-     * This method is likely to throw an exception.
-     */
-    virtual Input retrieve(int argc, char *argv[]) = 0;
-};
+Input retrieveInput(int argc, char *argv[]);
 
-#endif // __INPUTRETRIEVER_H__
+#endif // __INPUT_H__

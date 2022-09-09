@@ -22,8 +22,8 @@ $(BUILD_DIR)/%.cpp.o: %.cpp
 	g++ $(CPPFLAGS) -c $< -o $@
 
 create_folders:
-	mkdir -p $(BIN_DIR)
-	mkdir -p $(BUILD_DIR)
+	@mkdir -p $(BIN_DIR)
+	@mkdir -p $(BUILD_DIR)
 
 .PHONY: clean
 
