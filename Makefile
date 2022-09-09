@@ -1,3 +1,11 @@
+# ==== DOXYGEN ====
+doc:
+	doxygen Doxyfile
+	ln -s -f "$(PWD)/doc/html/index.html" "$(PWD)/doc"
+# Always recompile doc
+.PHONY: doc
+
+# ==== COMPILATION ====
 CC = g++
 CFLAGS = -Wall
 EXEC_NAME = main
