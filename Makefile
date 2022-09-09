@@ -3,7 +3,8 @@ CFLAGS = -Wall
 EXEC_NAME = main
 INCLUDES = $(wildcard src/*.h)
 LIBS =
-OBJ_FILES = Bank.o Cashier.o Client.o ClientArrival.o ClientDeparture.o Event.o PoissonRandomGenerator.o SED.o WaitingLine.o
+OBJ_FILES = Bank.o Cashier.o Client.o ClientArrival.o ClientDeparture.o Event.o \
+	PoissonRandomGenerator.o RandomGenerator.o SED.o WaitingLine.o
 INSTALL_DIR = ./bin
 
 all : $(EXEC_NAME)

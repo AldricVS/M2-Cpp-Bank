@@ -3,13 +3,15 @@
 
 #include <random>
 
+#include "RandomGenerator.h"
+
 /**
  * @brief Implementation of the {@link RandomGenerator} following the Poisson's law
  * @author
  * @since Fri Sep 09 2022
  * @see RandomGenerator
  */
-class PoissonRandomGenerator
+class PoissonRandomGenerator : RandomGenerator
 {
 private:
     std::default_random_engine _generator;
