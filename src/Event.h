@@ -31,7 +31,7 @@ public:
      * @brief get the hour of the event
      * @return 
      */
-    double hour();
+    double hour() const;
 
 };
 
