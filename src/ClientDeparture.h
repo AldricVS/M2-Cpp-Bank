@@ -1,9 +1,9 @@
 #if !defined(__CLIENTDEPARTURE_H__)
 #define __CLIENTDEPARTURE_H__
 
-#include "../bank/Bank.h"
-#include "../bank/Client.h"
-#include "../bank/Cashier.h"
+#include "Bank.h"
+#include "Client.h"
+#include "Cashier.h"
 #include "Event.h"
 
 class ClientDeparture : public Event
@@ -16,7 +16,7 @@ private:
 
 public:
 
-    ClientDeparture(double hour, Bank* bank, Client* client, Cashier* cashier);
+    ClientDeparture(double hour, Bank& bank, Client& client, Cashier& cashier);
 
     ~ClientDeparture();
 

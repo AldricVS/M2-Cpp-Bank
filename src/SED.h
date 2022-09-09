@@ -26,7 +26,7 @@ public:
      * @param event
      * @return (void)
      */
-    void add(Event event);
+    void add(Event& event);
 
     /**
      * @brief Execute the simulation

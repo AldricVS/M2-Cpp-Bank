@@ -1,7 +1,7 @@
 #if !defined(__ARRIVALEVENT_H__)
 #define __ARRIVALEVENT_H__
 
-#include "../bank/Bank.h"
+#include "Bank.h"
 #include "Event.h"
 
 class ClientArrival : public Event
@@ -11,7 +11,7 @@ private:
 
 public:
 
-    ClientArrival(double hour, Bank* bank);
+    ClientArrival(double hour, Bank& bank);
     ~ClientArrival();
 
     void execute();

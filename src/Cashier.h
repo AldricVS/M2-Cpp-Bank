@@ -1,6 +1,7 @@
 #if !defined(__CASHIER_H__)
 #define __CASHIER_H__
 
+#include "Bank.h"
 #include "Client.h"
 
 /**
@@ -12,6 +13,7 @@ class Cashier
 {
 
 private:
+    Bank* _bank;
     double _averageServiceTime;
 
     /// @brief Can be null.
@@ -19,7 +21,7 @@ private:
 
 public:
 
-    Cashier(double averageServiceTime);
+    Cashier(Bank& bank, double averageServiceTime);
     ~Cashier();
 
     double averageServiceTime();

@@ -1,14 +1,17 @@
 #if !defined(__EVENT_H__)
 #define __EVENT_H__
 
+#include "SED.h"
+
 class Event
 {
 private:
+    SED* _sed;
     double _hour;
 
 public:
 
-    Event();
+    Event(SED& sed);
 
     ~Event();
 

@@ -3,6 +3,7 @@
 
 #include <queue>
 
+#include "Bank.h"
 #include "Client.h"
 
 
@@ -10,12 +11,12 @@ class WaitingList
 {
 
 private:
-
+    Bank* bank;
     std::queue<Client*> _queue;
 
 public:
 
-    WaitingList();
+    WaitingList(Bank& bank);
 
     ~WaitingList();
 
@@ -27,7 +28,7 @@ public:
 
     double averageWaitingTime();
 
-    void addClient(Client* client);
+    void addClient(Client& client);
 
     bool isEmpty();
 

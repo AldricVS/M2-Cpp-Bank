@@ -5,7 +5,7 @@
 
 #include "Cashier.h"
 #include "WaitingList.h"
-#include "../event/SED.h"
+#include "SED.h"
 
 /**
  * @brief Class that represent the Bank
@@ -22,6 +22,8 @@ private:
     int _nbCashier;
 
     double _estimatedLength;
+
+    double _realLength;
 
     double _averageArrivalTime;
 
