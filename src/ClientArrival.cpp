@@ -1,5 +1,7 @@
 #include "ClientArrival.h"
 
+#include <random>
+
 
 ClientArrival::ClientArrival(Bank& bank, double hour) : Event(bank, hour)
 {
@@ -23,10 +25,9 @@ void ClientArrival::execute()
         bank->addToLine(client);
     }
     // calculation of the arrival of the next client
-    double hpa = 10.0; // TODO use fish law
+    double hpa = bank->computeNextArrivalTime();
     // create the new Arrival
-    ClientArrival newArrival(*bank, hpa);
+    ClientArrival* newArrival = new ClientArrival(*bank, hour() + hpa);
     // add it to the simulation
-    bank->add(newArrival);
-
+    bank->add(*newArrival);
 }

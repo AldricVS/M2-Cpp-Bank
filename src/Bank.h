@@ -6,6 +6,7 @@
 #include "Cashier.h"
 #include "WaitingLine.h"
 #include "SED.h"
+#include "PoissonRandomGenerator.h"
 
 /**
  * @brief The root of the simulation. This contains all methods relative to a bank and it's mechanics.
@@ -26,10 +27,13 @@ private:
 
     double _realLength;
 
-    double _averageArrivalTime;
-
     WaitingLine _waitingLine;
 
+    double _averageArrivalTime;
+    /**
+     * The random generator used for computing next client arrival
+     */
+    PoissonRandomGenerator _arrivalTimeGenerator;
 public:
 
     Bank(int nbCashier, double estimatedLength, std::list<double> cashierServiceTimes, double averageArrivalTime);
@@ -56,6 +60,8 @@ public:
     void addToLine(Client* client);
 
     Client* getWaitingClient();
+
+    double computeNextArrivalTime();
 
 };
 

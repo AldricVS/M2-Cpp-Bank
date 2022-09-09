@@ -1,7 +1,8 @@
 #include "Bank.h"
 
 Bank::Bank(int nbCashier, double estimatedLength, std::list<double> cashierServiceTimes, double averageArrivalTime):
-    _waitingLine(*this)
+    _waitingLine(*this),
+    _arrivalTimeGenerator(averageArrivalTime)
 {
     _nbCashier = nbCashier;
     _estimatedLength = estimatedLength;
@@ -11,7 +12,8 @@ Bank::Bank(int nbCashier, double estimatedLength, std::list<double> cashierServi
 }
 
 Bank::Bank(Bank& bank):
-    _waitingLine(bank._waitingLine)
+    _waitingLine(bank._waitingLine),
+    _arrivalTimeGenerator(bank._arrivalTimeGenerator)
 {
     _nbCashier = bank._nbCashier;
     _estimatedLength = bank._estimatedLength;
@@ -116,4 +118,9 @@ void Bank::addToLine(Client* client)
 Client* Bank::getWaitingClient()
 {
     return _waitingLine.removeFirst();
+}
+
+double Bank::computeNextArrivalTime()
+{
+    return _arrivalTimeGenerator.nextDouble();
 }
