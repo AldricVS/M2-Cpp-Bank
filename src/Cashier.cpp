@@ -1,13 +1,14 @@
 #include "Cashier.h"
 #include "ClientDeparture.h"
 
-Cashier::Cashier(Bank& bank, double averageServiceTime)
+Cashier::Cashier(Bank& bank, double averageServiceTime): _randomGenerator(averageServiceTime)
 {
     _bank = &bank;
     _averageServiceTime = averageServiceTime;
     _client = nullptr;
     _nbClientsServed = 0;
     _workingTime = 0;
+    
 }
 
 double Cashier::averageServiceTime() const
@@ -33,8 +34,9 @@ bool Cashier::isFree()
 void Cashier::serve(Client* client)
 {
     _client = client;
-    ClientDeparture* newEvent = new ClientDeparture(*_bank, _averageServiceTime, *_client, *this); // todo change averageserviceTime
-    _workingTime +=_averageServiceTime;
+    double servingTime = _randomGenerator.nextDouble();
+    ClientDeparture* newEvent = new ClientDeparture(*_bank, servingTime, *_client, *this); 
+    _workingTime +=servingTime;
     _bank->add(*newEvent);
 
 }

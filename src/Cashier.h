@@ -3,6 +3,7 @@
 
 #include "Bank.h"
 #include "Client.h"
+#include "PoissonRandomGenerator.h"
 
 /**
  * @brief Modelisation of a Cashier that will serve clients during a defined average service time.
@@ -17,6 +18,8 @@ private:
     double _averageServiceTime;
     int _nbClientsServed;
     double _workingTime;
+    PoissonRandomGenerator _randomGenerator;
+
 
     /// @brief Can be null.
     Client* _client;
