@@ -5,7 +5,7 @@ Event::Event(SED& sed, double hour){
     _hour = hour;
 }
 
-double Event::hour(){
+double Event::hour() const{
     return _hour;
 }
 
