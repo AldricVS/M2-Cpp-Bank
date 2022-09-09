@@ -5,8 +5,8 @@
 
 #include "Cashier.h"
 #include "WaitingLine.h"
-#include "SED.h"
-#include "PoissonRandomGenerator.h"
+#include "../event/SED.h"
+#include "../random/PoissonRandomGenerator.h"
 
 /**
  * @brief The root of the simulation. This contains all methods relative to a bank and it's mechanics.

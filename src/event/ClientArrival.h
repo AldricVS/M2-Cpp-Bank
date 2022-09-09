@@ -1,7 +1,7 @@
 #ifndef __CLIENTARRIVAL_H__
 #define __CLIENTARRIVAL_H__
 
-#include "Bank.h"
+#include "../bank/Bank.h"
 #include "Event.h"
 
 class ClientArrival : public Event

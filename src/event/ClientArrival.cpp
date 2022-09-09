@@ -1,8 +1,5 @@
 #include "ClientArrival.h"
 
-#include <random>
-
-
 ClientArrival::ClientArrival(Bank& bank, double hour) : Event(bank, hour)
 {
     

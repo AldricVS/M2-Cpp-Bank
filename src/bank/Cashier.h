@@ -2,7 +2,7 @@
 #define __CASHIER_H__
 
 #include "Client.h"
-#include "PoissonRandomGenerator.h"
+#include "../random/PoissonRandomGenerator.h"
 
 class Bank;
 
