@@ -50,13 +50,14 @@ public:
      * @brief Execute the simulation
      * @return (void)
      */
-    virtual void run() = 0;
+    virtual void run();
 
     /**
      * @brief Get the simulation time
      * @return
      */
     virtual double hour() = 0;
+
 
 };
 

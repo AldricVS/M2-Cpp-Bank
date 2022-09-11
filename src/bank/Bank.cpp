@@ -1,6 +1,7 @@
 #include "Bank.h"
+#include "ClientArrival.h"
 
-Bank::Bank(int nbCashier, double estimatedLength, std::list<double> cashierServiceTimes, double averageArrivalTime):
+Bank::Bank(int nbCashier, double estimatedLength, std::list<double> cashierServiceTimes, double averageArrivalTime): 
     _waitingLine(*this),
     _arrivalTimeGenerator(averageArrivalTime)
 {
@@ -9,6 +10,9 @@ Bank::Bank(int nbCashier, double estimatedLength, std::list<double> cashierServi
     _realLength = 0.0;
     _averageArrivalTime = averageArrivalTime;
     _cashiers = new Cashier*[nbCashier];
+    if(nbCashier != cashierServiceTimes.size()){
+        throw new InvalidTimeNumberException(nbCashier, cashierServiceTimes.size());
+    }
 }
 
 Bank::Bank(Bank& bank):
@@ -25,6 +29,12 @@ Bank::Bank(Bank& bank):
 Bank::~Bank()
 {
     delete[] _cashiers;
+}
+
+void Bank::run(){
+    ClientArrival* newClient  = new ClientArrival(*this, computeNextArrivalTime());
+    add(*newClient);
+    SED::run();
 }
 
 Bank& Bank::operator=(const Bank& other)

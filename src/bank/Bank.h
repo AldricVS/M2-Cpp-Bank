@@ -2,6 +2,7 @@
 #define __BANK_H__
 
 #include <list>
+#include <stdexcept>
 
 #include "Cashier.h"
 #include "WaitingLine.h"
@@ -44,6 +45,12 @@ public:
     bool operator==(const Bank& other);
 
     /**
+     * @brief Run the simulation
+     * @return (void)
+     */
+    void run();
+
+    /**
      * Getter for the "estimatedLength" input
      */
     double estimatedLength() const;
@@ -77,7 +84,15 @@ public:
 
 };
 
-// TODO créer une exception si le nombre de fichiers est pas valide
+class InvalidTimeNumberException : public std::exception {
+    public:
+
+    const int _nbCashier;
+
+    const int _nbServiceTime;
+
+    InvalidTimeNumberException(int nbCashier, int nbServiceTime): _nbCashier(nbCashier), _nbServiceTime(nbServiceTime){};
+};
 
 
 #endif // __BANK_H__

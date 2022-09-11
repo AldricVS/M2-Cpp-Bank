@@ -21,8 +21,12 @@ void ClientArrival::execute()
     }
     // calculation of the arrival of the next client
     double hpa = bank->computeNextArrivalTime();
-    // create the new Arrival
-    ClientArrival* newArrival = new ClientArrival(*bank, hour() + hpa);
-    // add it to the simulation
-    bank->add(*newArrival);
+    double time = hour() + hpa;
+    if(time < bank->estimatedLength()){
+        // create the new Arrival
+        ClientArrival* newArrival = new ClientArrival(*bank, time);
+        // add it to the simulation
+        bank->add(*newArrival);
+    }
+    
 }
