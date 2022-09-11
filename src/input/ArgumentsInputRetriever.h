@@ -1,6 +1,9 @@
 #ifndef __ARGUMENTSINPUTRETRIEVER_H__
 #define __ARGUMENTSINPUTRETRIEVER_H__
 
+#include <map>
+#include <stdexcept>
+
 #include "InputRetriever.h"
 
 /**
@@ -14,6 +17,13 @@ private:
     int _argc;
     char** _argv;
 
+    /**
+     * From the command line, create a map linking any argument to his value(s)
+     * 
+     * @returns a map with key = argument name and value = list of strings following the argument
+     */
+    std::map<std::string, std::list<std::string>> gatherArguments();
+
 public:
 
     /**
@@ -23,7 +33,42 @@ public:
      */
     ArgumentsInputRetriever(int argc, char *argv[]);
 
+    /**
+     * @throw ParseException if an error occured while parsing the command line arguments.
+     * @throw ArgumentNotFoundException if a wanted argument is not found.
+     */
     Input retrieve();
+};
+
+class ParseException : std::exception
+{
+public:
+    const int argumentIndex;
+    const std::string message;
+
+    ParseException(int argumentIdx, std::string msg);
+
+    const char* what();
+};
+
+class ArgumentNotFoundException : public std::exception
+{
+public:
+    const std::string message;
+
+    ArgumentNotFoundException(std::string msg);
+
+    const char* what();
+};
+
+class InvalidArgumentException : public std::exception
+{
+public:
+    const std::string message;
+
+    InvalidArgumentException(std::string msg);
+
+    const char* what();
 };
 
 #endif // __ARGUMENTSINPUTRETRIEVER_H__
