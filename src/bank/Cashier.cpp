@@ -11,6 +11,15 @@ Cashier::Cashier(Bank& bank, double averageServiceTime): _randomGenerator(averag
     
 }
 
+Cashier::Cashier(Cashier &cashier): _randomGenerator(cashier._averageServiceTime)
+{
+    _bank = cashier._bank;
+    _averageServiceTime = cashier._averageServiceTime;
+    _client = cashier._client;
+    _nbClientsServed = cashier._nbClientsServed;
+    _workingTime = cashier._workingTime;
+}
+
 Cashier::~Cashier()
 {}
 

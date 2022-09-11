@@ -107,9 +107,10 @@ WaitingLine& Bank::waitingLine()
 
 Cashier* Bank::firstFree()
 {
+
     for (int i = 0; i < _nbCashier; i++)
     {
-        Cashier* cashier = _cashiers[i];
+        Cashier* cashier(_cashiers[i]);
         if (cashier->isFree())
         {
             return cashier;

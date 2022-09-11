@@ -29,6 +29,7 @@ private:
 public:
 
     Cashier(Bank& bank, double averageServiceTime);
+    Cashier(Cashier &cashier);
     ~Cashier();
 
     double averageServiceTime() const;

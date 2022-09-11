@@ -2,9 +2,9 @@
 #include <iostream>
 using namespace std;
 
-ClientArrival::ClientArrival(Bank& bank, double hour) : Event(bank, hour)
+ClientArrival::ClientArrival(Bank& bank, double hour) : Event(bank, hour), _bank(&bank)
 {
-    
+
 }
 
 ClientArrival::~ClientArrival()
@@ -13,23 +13,23 @@ ClientArrival::~ClientArrival()
 void ClientArrival::execute()
 {
     Client* client = new Client(hour());
-    Cashier* firstFreeCashier = bank->firstFree();
-
+    cout << "this :" << this << endl;
+    Cashier* firstFreeCashier = _bank->firstFree();
     // manage client depending if a cashier is free or not
     if(firstFreeCashier == nullptr){
         firstFreeCashier->serve(client);
     }
     else{
-        bank->addToLine(client);
+        _bank->addToLine(client);
     }
     // calculation of the arrival of the next client
-    double hpa = bank->computeNextArrivalTime();
+    double hpa = _bank->computeNextArrivalTime();
     double time = hour() + hpa;
-    if(time < bank->estimatedLength()){
+    if(time < _bank->estimatedLength()){
         // create the new Arrival
-        ClientArrival* newArrival = new ClientArrival(*bank, time);
+        ClientArrival* newArrival = new ClientArrival(*_bank, time);
         // add it to the simulation
-        bank->add(*newArrival);
+        _bank->add(*newArrival);
     }
     
 }

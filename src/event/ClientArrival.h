@@ -7,7 +7,7 @@
 class ClientArrival : public Event
 {
 private:
-    Bank* bank;
+    Bank* _bank;
 
 public:
 
