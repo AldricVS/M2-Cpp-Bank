@@ -135,7 +135,7 @@ ArgumentNotFoundException::ArgumentNotFoundException(std::string msg):
     message(msg)
 {}
 
-const char* ParseException::what()
+const char* ArgumentNotFoundException::what()
 {
     return message.c_str();
 }

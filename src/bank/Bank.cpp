@@ -1,6 +1,7 @@
 #include "Bank.h"
 #include "ClientArrival.h"
 
+
 Bank::Bank(int nbCashier, double estimatedLength, std::list<double> cashierServiceTimes, double averageArrivalTime): 
     _waitingLine(*this),
     _arrivalTimeGenerator(averageArrivalTime)
@@ -104,6 +105,7 @@ WaitingLine& Bank::waitingLine()
 
 Cashier* Bank::firstFree()
 {
+
     for (int i = 0; i < _nbCashier; i++)
     {
         Cashier* cashier = _cashiers[i];

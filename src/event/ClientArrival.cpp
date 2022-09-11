@@ -1,4 +1,6 @@
 #include "ClientArrival.h"
+#include <iostream>
+using namespace std;
 
 ClientArrival::ClientArrival(Bank& bank, double hour) : Event(bank, hour)
 {
@@ -12,6 +14,8 @@ void ClientArrival::execute()
 {
     Client* client = new Client(hour());
     Cashier* firstFreeCashier = bank->firstFree();
+    cout << bank->firstFree() << endl;
+
     // manage client depending if a cashier is free or not
     if(firstFreeCashier == nullptr){
         firstFreeCashier->serve(client);

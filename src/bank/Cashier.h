@@ -3,6 +3,8 @@
 
 #include "Client.h"
 #include "../random/PoissonRandomGenerator.h"
+#include <iostream>
+using namespace std;
 
 class Bank;
 

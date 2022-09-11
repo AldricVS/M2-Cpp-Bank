@@ -33,6 +33,8 @@ class SED
 private:
     std::set<Event*, EventComparator> _eventSet;
 
+    double _hour;
+
 public:
 
     SED();
@@ -56,7 +58,7 @@ public:
      * @brief Get the simulation time
      * @return
      */
-    virtual double hour() = 0;
+    double hour();
 
 
 };

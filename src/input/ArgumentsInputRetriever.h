@@ -2,6 +2,7 @@
 #define __ARGUMENTSINPUTRETRIEVER_H__
 
 #include <map>
+#include <list>
 #include <stdexcept>
 
 #include "InputRetriever.h"
