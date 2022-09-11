@@ -1,5 +1,5 @@
 #include "Bank.h"
-#include "ClientArrival.h"
+#include "../event/ClientArrival.h"
 
 
 Bank::Bank(int nbCashier, double estimatedLength, std::list<double> cashierServiceTimes, double averageArrivalTime): 
@@ -15,6 +15,13 @@ Bank::Bank(int nbCashier, double estimatedLength, std::list<double> cashierServi
     if(nbCashier != cashierServiceTimes.size()){
         throw new InvalidTimeNumberException(nbCashier, cashierServiceTimes.size());
     }
+
+    int index = 0;
+    for (std::list<double>::iterator it = cashierServiceTimes.begin(); it != cashierServiceTimes.end(); it++)
+    {
+        _cashiers[index] = new Cashier(*this, *it);
+        index++;
+    }
 }
 
 Bank::Bank(Bank& bank):
@@ -27,6 +34,10 @@ Bank::Bank(Bank& bank):
     _realLength = bank._realLength;
     _averageArrivalTime = bank._averageArrivalTime;
     _cashiers = new Cashier*[bank._nbCashier];
+    for (int i = 0; i < _nbCashier; i++)
+    {
+        _cashiers[i] = new Cashier(*bank._cashiers[i]);
+    }
 }
 
 Bank::~Bank()

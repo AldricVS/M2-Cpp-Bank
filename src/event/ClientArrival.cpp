@@ -13,7 +13,6 @@ ClientArrival::~ClientArrival()
 void ClientArrival::execute()
 {
     Client* client = new Client(hour());
-    cout << "this :" << this << endl;
     Cashier* firstFreeCashier = _bank->firstFree();
     // manage client depending if a cashier is free or not
     if(firstFreeCashier == nullptr){
@@ -24,6 +23,7 @@ void ClientArrival::execute()
     }
     // calculation of the arrival of the next client
     double hpa = _bank->computeNextArrivalTime();
+    cout << hour() << hpa << endl;
     double time = hour() + hpa;
     if(time < _bank->estimatedLength()){
         // create the new Arrival

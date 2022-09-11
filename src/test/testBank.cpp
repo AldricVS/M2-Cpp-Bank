@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 {
     cout << "----- Test bank simulation -----" << endl;
     int nbCashier = 4;
-    double estimatedLength = 200; 
+    double estimatedLength = 2; 
     list<double> efficiencylist{6, 7, 7, 9};
     double averageArrivalInterval = 5;
     cout << " nbCashier : " << nbCashier << endl;
