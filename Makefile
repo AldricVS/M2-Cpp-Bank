@@ -1,9 +1,9 @@
 
-TARGET_EXEC ?= main
-
 BIN_DIR ?= bin
 BUILD_DIR ?= build
 SRC_DIRS ?= src
+
+MAINS := build/src/main.cpp.o build/src/test/testBank.cpp.o
 
 SRCS := $(shell find $(SRC_DIRS) -name *.cpp -or -name *.c -or -name *.s)
 OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
@@ -14,18 +14,21 @@ INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
 CPPFLAGS ?= $(INC_FLAGS) -MMD -MP
 
-$(BIN_DIR)/$(TARGET_EXEC): create_folders $(OBJS)
-	g++ $(OBJS) -o $@ $(LDFLAGS)
+main: create_folders $(OBJS)
+	g++ $(filter-out $(MAINS), $(OBJS)) $(BUILD_DIR)/src/main.cpp.o -o $(BIN_DIR)/main $(LDFLAGS)
+
+testBank: create_folders $(OBJS)
+	g++ $(filter-out $(MAINS), $(OBJS)) $(BUILD_DIR)/src/test/testBank.cpp.o -o $(BIN_DIR)/testBank $(LDFLAGS)
 
 $(BUILD_DIR)/%.cpp.o: %.cpp
-	mkdir -p $(dir $@)
+	@mkdir -p $(dir $@)
 	g++ $(CPPFLAGS) -c $< -o $@
 
 create_folders:
-	mkdir -p $(BIN_DIR)
-	mkdir -p $(BUILD_DIR)
+	@mkdir -p $(BIN_DIR)
+	@mkdir -p $(BUILD_DIR)
 
-.PHONY: clean create_folders
+.PHONY: clean
 
 clean:
 	$(RM) -r $(BUILD_DIR)
