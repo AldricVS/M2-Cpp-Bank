@@ -13,7 +13,7 @@ class InteractiveInputRetriever : public InputRetriever
 public:
     InteractiveInputRetriever();
 
-    Input retrieve(int argc, char *argv[]);
+    Input retrieve();
 };
 
 #endif // __INTERACTIVEINPUTRETRIEVER_H__

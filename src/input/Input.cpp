@@ -1,6 +1,8 @@
 #include "Input.h"
 
 #include "InputRetriever.h"
+#include "ArgumentsInputRetriever.h"
+#include "InteractiveInputRetriever.h"
 
 Input::Input(double excpectedDur, int nbCashiers, std::list<double> averageTimeList, double averageArrivalTm):
     expectedDuration(excpectedDur),
@@ -10,17 +12,24 @@ Input::Input(double excpectedDur, int nbCashiers, std::list<double> averageTimeL
 {}
 
 /**
- * Depending on the implementation to use 
+ * Create a retriever depending on the implementation to use 
  */
 InputRetriever* createRetriever(int argc, char *argv[])
 {
+    // No argument provided : interactive mode
+    if (argc == 1)
+    {
+        return new InteractiveInputRetriever();
+    }
 
+    // Default case : CLI mode
+    return new ArgumentsInputRetriever(argc, argv);
 }
 
 Input retrieveInput(int argc, char *argv[])
 {
-    // Find the implementation to use
-    // TODO
-    std::list<double> lst;
-    return Input(0, 0, lst, 0);
+    InputRetriever* retriever = createRetriever(argc, argv);
+    Input input = retriever->retrieve();
+    delete retriever;
+    return input;
 }

@@ -2,10 +2,13 @@
 
 #include "Input.h"
 
-ArgumentsInputRetriever::ArgumentsInputRetriever()
-{}
+ArgumentsInputRetriever::ArgumentsInputRetriever(int argc, char *argv[]) : InputRetriever()
+{
+    _argc = argc;
+    _argv = argv;
+}
 
-Input ArgumentsInputRetriever::retrieve(int argc, char *argv[])
+Input ArgumentsInputRetriever::retrieve()
 {
     // TODO
     std::list<double> lst;

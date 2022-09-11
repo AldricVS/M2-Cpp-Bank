@@ -16,6 +16,6 @@ public:
      * Retrieve what the user want to set for the simulation.
      * This method is likely to throw an exception.
      */
-    virtual Input retrieve(int argc, char *argv[]) = 0;
+    virtual Input retrieve() = 0;
 };
 #endif // __INPUTRETRIEVER_H__

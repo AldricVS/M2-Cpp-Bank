@@ -10,10 +10,20 @@
  */
 class ArgumentsInputRetriever : public InputRetriever
 {
-public:
-    ArgumentsInputRetriever();
+private:
+    int _argc;
+    char** _argv;
 
-    Input retrieve(int argc, char *argv[]);
+public:
+
+    /**
+     * Create the instance with the command line arguments provided by the useron program call.
+     * 
+     * This class is not responsible for handling this data : on destruction, the argv array will not be freed.
+     */
+    ArgumentsInputRetriever(int argc, char *argv[]);
+
+    Input retrieve();
 };
 
 #endif // __ARGUMENTSINPUTRETRIEVER_H__
