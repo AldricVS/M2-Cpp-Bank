@@ -19,13 +19,10 @@ double SED::hour(){
 }
 
 void SED::run(){
-    cout << "test" << endl; 
-
     while(_eventSet.size() != 0){
         Event* event = *_eventSet.begin();
         _eventSet.erase(_eventSet.begin());
         event->execute();
-        cout << "event " << endl; 
         _hour = event->hour();
         delete event;
     }

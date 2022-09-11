@@ -14,7 +14,6 @@ void ClientArrival::execute()
 {
     Client* client = new Client(hour());
     Cashier* firstFreeCashier = bank->firstFree();
-    cout << bank->firstFree() << endl;
 
     // manage client depending if a cashier is free or not
     if(firstFreeCashier == nullptr){

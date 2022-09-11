@@ -3,6 +3,7 @@
 
 
 Bank::Bank(int nbCashier, double estimatedLength, std::list<double> cashierServiceTimes, double averageArrivalTime): 
+    SED(),
     _waitingLine(*this),
     _arrivalTimeGenerator(averageArrivalTime)
 {
@@ -17,6 +18,7 @@ Bank::Bank(int nbCashier, double estimatedLength, std::list<double> cashierServi
 }
 
 Bank::Bank(Bank& bank):
+    SED(),
     _waitingLine(bank._waitingLine),
     _arrivalTimeGenerator(bank._averageArrivalTime)
 {
@@ -105,7 +107,6 @@ WaitingLine& Bank::waitingLine()
 
 Cashier* Bank::firstFree()
 {
-
     for (int i = 0; i < _nbCashier; i++)
     {
         Cashier* cashier = _cashiers[i];
