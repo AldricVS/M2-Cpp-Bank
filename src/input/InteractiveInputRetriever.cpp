@@ -1,5 +1,7 @@
 #include "InteractiveInputRetriever.h"
 
+#include <iostream>
+
 #include "Input.h"
 
 InteractiveInputRetriever::InteractiveInputRetriever()
