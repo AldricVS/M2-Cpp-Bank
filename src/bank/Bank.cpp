@@ -144,3 +144,25 @@ double Bank::computeNextArrivalTime()
 {
     return _arrivalTimeGenerator.nextDouble();
 }
+
+void Bank::setRealLength(double hour){
+    _realLength = hour;
+}
+
+
+void Bank::displaySimulationDatas(){
+    cout << "----- Simulation Datas -----"<< endl;
+    cout << "\tEstimated Length : " << _estimatedLength << endl;  
+    cout << "\tReal Length : " << _realLength << endl;  
+    cout << "\tAverage Waiting Time : " << _waitingLine.averageWaitingTime() << endl;
+    cout << "\tMaximal Waiting Line Length : " << _waitingLine.maximumLength() << endl;
+    cout << "\tAverage Waiting Line Length : " << _waitingLine.averageLength() << endl;
+    cout << "-> Cashier data" << endl;
+    for (int i = 0; i < _nbCashier; i++)
+    {
+        cout << "Cashier n°" << i << endl;
+        cout << "\tOccupation rate : " << _cashiers[i]->OccupationRate() << endl;
+        cout << "\tNumber of client served : " << _cashiers[i]->nbClients() << endl;
+    }
+    
+}

@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
     Bank bank(nbCashier, estimatedLength, efficiencylist, averageArrivalInterval);
 
     bank.run();
+    bank.displaySimulationDatas();
     return 0;
 }
 

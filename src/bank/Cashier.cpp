@@ -45,6 +45,8 @@ bool Cashier::isFree()
 
 void Cashier::serve(Client* client)
 {
+    cout << "serving" << endl;
+    _nbClientsServed++;
     _client = client;
     double servingTime = _randomGenerator.nextDouble();
     ClientDeparture* newEvent = new ClientDeparture(*_bank, client->arrivalTime() + servingTime, *_client, *this); 

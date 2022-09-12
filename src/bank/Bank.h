@@ -82,6 +82,10 @@ public:
 
     double computeNextArrivalTime();
 
+    void displaySimulationDatas();
+
+    void setRealLength(double hour);
+
 };
 
 class InvalidTimeNumberException : public std::exception {
