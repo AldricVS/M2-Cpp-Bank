@@ -1,4 +1,5 @@
 #include "PoissonRandomGenerator.h"
+#include <ctime>
 
 PoissonRandomGenerator::PoissonRandomGenerator(double mean):
     _mean(mean),

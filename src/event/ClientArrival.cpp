@@ -23,7 +23,7 @@ void ClientArrival::execute()
     }
     // calculation of the arrival of the next client
     double hpa = _bank->computeNextArrivalTime();
-    cout << hour() << hpa << endl;
+    cout << hour() << " " << hpa << endl;
     double time = hour() + hpa;
     if(time < _bank->estimatedLength()){
         // create the new Arrival
