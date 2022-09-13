@@ -40,6 +40,12 @@ public:
 
     bool isFree();
 
+    /**
+     * Remove the client currently served.
+     * This does not free the client memory.
+     */
+    void free();
+
     void serve(Client* client);
 
     void wait();

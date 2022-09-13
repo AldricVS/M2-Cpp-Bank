@@ -21,6 +21,7 @@ void ClientArrival::execute()
         firstFreeCashier->serve(client);
     }
     else{
+        cout << "Client added to line " << client->arrivalTime() << endl;
         _bank->addToLine(client);
     }
     // calculation of the arrival of the next client

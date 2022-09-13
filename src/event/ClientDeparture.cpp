@@ -15,14 +15,17 @@ void ClientDeparture::execute()
     // update realLength
     cout << "departure : " << hour() << endl;
     delete _client;
-    // delete does not set the _client pointer to null
-    _client = nullptr;
+    // delete does not set the cashier's _client pointer to null
+    _cashier->free();
     // manage Cashier depending presence of other clients
-    if(_bank->nbClients() == 0){
+    WaitingLine& waitingLine = _bank->waitingLine();
+    if (waitingLine.isEmpty())
+    {
+        cout << "Wait" << endl;
         _cashier->wait();
     }
     else{
-        Client* newClient = _bank->getWaitingClient();
+        Client* newClient = waitingLine.removeFirst();
         if (newClient != nullptr)
         {
             _cashier->serve(newClient);

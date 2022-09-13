@@ -43,6 +43,11 @@ bool Cashier::isFree()
     return _client==nullptr;
 }
 
+void Cashier::free()
+{
+    _client = nullptr;
+}
+
 void Cashier::serve(Client* client)
 {
     // cout << "serving" << endl;
