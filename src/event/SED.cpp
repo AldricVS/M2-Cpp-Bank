@@ -22,13 +22,13 @@ void SED::run(){
     while(_eventSet.size() != 0){
         Event* event = *_eventSet.begin();
         _eventSet.erase(_eventSet.begin());
-        event->execute();
         _hour = event->hour();
+        event->execute();
         delete event;
     }
 }
 
 bool EventComparator::operator()(const Event* event1, const Event* event2) const
 {
-    return (event1->hour() > event2->hour());
+    return (event1->hour() < event2->hour());
 }

@@ -13,8 +13,7 @@ void ClientDeparture::execute()
 {
     // remove client
     // update realLength
-    cout << "departure" << endl;
-    _bank->setRealLength(hour());
+    cout << "departure : " << hour() << endl;
     delete _client;
     // delete does not set the _client pointer to null
     _client = nullptr;

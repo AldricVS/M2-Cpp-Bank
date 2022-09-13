@@ -49,6 +49,7 @@ void Bank::run(){
     ClientArrival* newClient  = new ClientArrival(*this, computeNextArrivalTime());
     add(*newClient);
     SED::run();
+    _realLength = SED::hour();
 }
 
 Bank& Bank::operator=(const Bank& other)
