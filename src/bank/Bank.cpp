@@ -102,7 +102,7 @@ double Bank::realLength() const
     return _realLength;
 }
 
-int Bank::nbClients() const
+int Bank::nbClientsServed() const
 {
     int totalNbClients = 0;
     for (int i = 0; i < _nbCashier; i++)

@@ -70,7 +70,7 @@ public:
      */
     double realLength() const;
 
-    int nbClients() const;
+    int nbClientsServed() const;
 
     WaitingLine& waitingLine();
 

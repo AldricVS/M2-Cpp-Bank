@@ -10,6 +10,10 @@ WaitingLine::~WaitingLine()
 
 double WaitingLine::averageLength()
 {
+    if (_stepCount <= 0)
+    {
+        return 0.0;
+    }
     return _sumLengthPerStep / _stepCount;
 }
 
@@ -20,7 +24,12 @@ double WaitingLine::maximumLength()
 
 double WaitingLine::averageWaitingTime()
 {
-    return _totalWaitingTime / _bank->nbClients();
+    double nbClientsServed = _bank->nbClientsServed();
+    if (nbClientsServed <= 0)
+    {
+        return 0.0;
+    }
+    return _totalWaitingTime / nbClientsServed;
 }
 
 void WaitingLine::updateLengthAttributes()
