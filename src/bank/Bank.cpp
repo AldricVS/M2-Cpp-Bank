@@ -1,4 +1,7 @@
 #include "Bank.h"
+
+#include <sstream>
+
 #include "../event/ClientArrival.h"
 
 
@@ -13,7 +16,7 @@ Bank::Bank(int nbCashier, double estimatedLength, std::list<double> cashierServi
     _averageArrivalTime = averageArrivalTime;
     _cashiers = new Cashier*[nbCashier];
     if(nbCashier != cashierServiceTimes.size()){
-        throw new InvalidTimeNumberException(nbCashier, cashierServiceTimes.size());
+        throw InvalidTimeNumberException(nbCashier, cashierServiceTimes.size());
     }
 
     int index = 0;
@@ -166,4 +169,20 @@ void Bank::displaySimulationDatas(){
         cout << "\tNumber of client served : " << _cashiers[i]->nbClients() << endl;
     }
     
+}
+
+// Exception definition
+
+InvalidTimeNumberException::InvalidTimeNumberException(int cashierCount, int serviceTimeCount):
+    nbCashier(cashierCount),
+    nbServiceTimes(serviceTimeCount),
+    message(
+        "Number of cashiers is not the same as the number of times provided : nb cashiers : "
+        + to_string(nbCashier) + ", nb times provided : " + to_string(serviceTimeCount)
+    )
+{}
+
+const char* InvalidTimeNumberException::what()
+{
+    return message.c_str();
 }

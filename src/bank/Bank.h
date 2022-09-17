@@ -91,11 +91,15 @@ public:
 class InvalidTimeNumberException : public std::exception {
     public:
 
-    const int _nbCashier;
+    const int nbCashier;
 
-    const int _nbServiceTime;
+    const int nbServiceTimes;
 
-    InvalidTimeNumberException(int nbCashier, int nbServiceTime): _nbCashier(nbCashier), _nbServiceTime(nbServiceTime){};
+    const std::string message;
+
+    InvalidTimeNumberException(int cashierCount, int serviceTimeCount);
+
+    const char* what();
 };
 
 

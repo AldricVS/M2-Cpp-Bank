@@ -1,5 +1,6 @@
 #include "ArgumentsInputRetriever.h"
 
+#include <iostream>
 #include <sstream>
 
 #include "Input.h"
@@ -73,7 +74,7 @@ list<double> findCashiersAverageTimes(map<string, list<string>>& map, int cashie
         string s = *it;
         times.push_back(stod(s));
     }
-    if (times.size())
+    if (times.size() != cashierCount)
     {
         throw InvalidArgumentException("The number of times provided is not the same as the number of cashiers set");
     }
@@ -94,25 +95,26 @@ Input ArgumentsInputRetriever::retrieve()
 
 map<string, list<string>> ArgumentsInputRetriever::gatherArguments()
 {
-    string *currentArg = nullptr;
+    char *currentKey = nullptr;
     map<string, list<string>> map;
-    for (int i = 0; i < _argc; i++)
+    for (int i = 1; i < _argc; i++)
     {
-        string arg = _argv[i];
+        char* arg = _argv[i];
         
         // If it is an arg name, we will create a map for it
         if (arg[0] == '-')
         {
             // Map will be default-constructed on first [] call, no need to insert it by hand
-            currentArg = &arg;
+            // Just keep in memory that the current key is this argument
+            currentKey = arg;
         } else 
         {
-            // We should already have a current arg
-            if (currentArg == nullptr)
+            // We should already have a current key
+            if (currentKey == nullptr)
             {
-                throw ParseException(i, "Expected an argument name (with a '-') before encountering this");
+                throw ParseException(i, "Expected an argument key name (with a '-') before encountering this");
             }
-            map[*currentArg].push_back(arg);
+            map[currentKey].push_back(arg);
         }
     }
     return map;
@@ -120,22 +122,20 @@ map<string, list<string>> ArgumentsInputRetriever::gatherArguments()
 
 ParseException::ParseException(int argumentIdx, std::string msg):
     argumentIndex(argumentIdx),
-    message(msg)
+    message(msg + " (at argument n°\"" + std::to_string(argumentIdx) + "\")")
 {
 }
 
-const char* ParseException::what()
+const char* ParseException::what() const noexcept
 {
-    stringstream ss;
-    ss << message << " (at argument n°" << argumentIndex << ")";
-    return ss.str().c_str();
+    return message.c_str();
 }
 
 ArgumentNotFoundException::ArgumentNotFoundException(std::string msg):
     message(msg)
 {}
 
-const char* ArgumentNotFoundException::what()
+const char* ArgumentNotFoundException::what() const noexcept
 {
     return message.c_str();
 }
@@ -144,7 +144,7 @@ InvalidArgumentException::InvalidArgumentException(std::string msg):
     message(msg)
 {}
 
-const char* InvalidArgumentException::what()
+const char* InvalidArgumentException::what() const noexcept
 {
     return message.c_str();
 }

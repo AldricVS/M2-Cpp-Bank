@@ -41,7 +41,7 @@ public:
     Input retrieve();
 };
 
-class ParseException : std::exception
+class ParseException : public std::exception
 {
 public:
     const int argumentIndex;
@@ -49,7 +49,7 @@ public:
 
     ParseException(int argumentIdx, std::string msg);
 
-    const char* what();
+    const char* what() const noexcept;
 };
 
 class ArgumentNotFoundException : public std::exception
@@ -59,7 +59,7 @@ public:
 
     ArgumentNotFoundException(std::string msg);
 
-    const char* what();
+    const char* what() const noexcept;
 };
 
 class InvalidArgumentException : public std::exception
@@ -69,7 +69,7 @@ public:
 
     InvalidArgumentException(std::string msg);
 
-    const char* what();
+    const char* what() const noexcept;
 };
 
 #endif // __ARGUMENTSINPUTRETRIEVER_H__
