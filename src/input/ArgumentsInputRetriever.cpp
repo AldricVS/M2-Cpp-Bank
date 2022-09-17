@@ -76,7 +76,10 @@ list<double> findCashiersAverageTimes(map<string, list<string>>& map, int cashie
     }
     if (times.size() != cashierCount)
     {
-        throw InvalidArgumentException("The number of times provided is not the same as the number of cashiers set");
+        stringstream ss;
+        ss << "The number of times provided is not the same as the number of cashiers set : "
+            << "expected : " << cashierCount << " provided : " << times.size();
+        throw InvalidArgumentException(ss.str());
     }
     return times;
 }
