@@ -23,7 +23,7 @@ public:
 };
 
 /**
- * Retrieve the user input. The type of retrieval depends on what the user provided as arguments with the process call.
+ * @brief  the user input. The type of retrieval depends on what the user provided as arguments with the process call.
  * 
  * @throw An exception depending on the retrieval method. Garanteed to be subtype of std::exception.
  */

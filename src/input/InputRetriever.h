@@ -14,7 +14,7 @@ public:
     
     /**
      * Retrieve what the user want to set for the simulation.
-     * This method is likely to throw an exception.
+     * This method is likely to throw an exception depending on the implementation.
      */
     virtual Input retrieve() = 0;
 };

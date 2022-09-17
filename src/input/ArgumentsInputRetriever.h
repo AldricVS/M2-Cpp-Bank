@@ -28,23 +28,37 @@ private:
 public:
 
     /**
-     * Create the instance with the command line arguments provided by the useron program call.
-     * 
+     * @brief Create the instance with the command line arguments provided by the useron program call.
      * This class is not responsible for handling this data : on destruction, the argv array will not be freed.
      */
     ArgumentsInputRetriever(int argc, char *argv[]);
 
     /**
+     * @brief Create the input only from the command-line arguments.
+     * 
      * @throw ParseException if an error occured while parsing the command line arguments.
      * @throw ArgumentNotFoundException if a wanted argument is not found.
      */
     Input retrieve();
 };
 
+/**
+ * @brief An exception triggered when an error happened when retrieving arguments : a value without a previous key for example.
+ * @author 
+ * @since Sat Sep 17 2022
+ */
 class ParseException : public std::exception
 {
 public:
+    
+    /**
+     * @brief The position of the argument in the list provided.
+     */
     const int argumentIndex;
+    
+    /**
+     * @brief The error message to display by the "what" method
+     */
     const std::string message;
 
     ParseException(int argumentIdx, std::string msg);
@@ -52,9 +66,18 @@ public:
     const char* what() const noexcept;
 };
 
+/**
+ * @brief An exception triggered when a needed key is not found in the arguments provided.
+ * @author 
+ * @since Sat Sep 17 2022
+ */
 class ArgumentNotFoundException : public std::exception
 {
 public:
+
+    /**
+     * @brief The error message to display by the "what" method
+     */
     const std::string message;
 
     ArgumentNotFoundException(std::string msg);
@@ -62,9 +85,18 @@ public:
     const char* what() const noexcept;
 };
 
+/**
+ * @brief An exception triggered when an unexpected value is retrieved (negative counts for example).
+ * @author 
+ * @since Sat Sep 17 2022
+ */
 class InvalidArgumentException : public std::exception
 {
 public:
+
+    /**
+     * @brief The error message to display by the "what" method
+     */
     const std::string message;
 
     InvalidArgumentException(std::string msg);
