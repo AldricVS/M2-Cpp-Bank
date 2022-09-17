@@ -16,6 +16,10 @@ public:
     Client(double arrivalTime);
     ~Client();
 
+    /**
+     * @brief Get the arrival Time of the client
+     * @return double
+     */
     double arrivalTime();
 };
 

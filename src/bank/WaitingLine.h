@@ -49,34 +49,42 @@ public:
     WaitingLine(Bank& bank);
     ~WaitingLine();
 
+
     /**
-     * Compute the average length from all the previous lengths over each step
-     * (1 step = 1 departure or arrival).
+     * @brief Compute the average length from all the previous lengths over each step (1 step = 1 departure or arrival).
+     * @return 
      */
     double averageLength();
 
+    /**
+     * @brief Get the maximum length of the line
+     * @return 
+     */
     double maximumLength();
 
     /**
-     * Compute the average waiting time for all the clients.
-     * This is updated when removing a client.
+     * @brief Compute the average waiting time for all the clients. This is updated when removing a client.
+     * @return 
      */
     double averageWaitingTime();
 
+   
     /**
-     * Add a client to the queue and update the average (and possibly the maximum) length.
+     * @brief Add a client to the queue and update the average (and possibly the maximum) length.
+     * @param client
+     * @return (void)
      */
     void addClient(Client& client);
 
+    /**
+     * @brief Check if the waitingLine is empty
+     * @return 
+     */
     bool isEmpty();
 
     /**
-     * Remove and returns the first client on the queue or null if the queue is empty.
-     * 
-     * If the queue was not empty, this operation will trigger a new step, 
-     * so the average length will be altered.
-     * 
-     * Moreover, removing a client will also alter the total and average waiting time.
+     * @brief Remove and returns the first client on the queue or null if the queue is empty. If the queue was not empty, this operation will trigger a new step,  so the average length will be altered. Moreover, removing a client will also alter the total and average waiting time.
+     * @return Client*
      */
     Client* removeFirst();
 };

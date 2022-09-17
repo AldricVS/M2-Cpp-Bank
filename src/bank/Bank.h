@@ -50,44 +50,91 @@ public:
      */
     void run();
 
+   
     /**
-     * Getter for the "estimatedLength" input
+     * @brief Getter for the "estimatedLength" input
+     * @return double - Estimated Length
      */
     double estimatedLength() const;
 
+    
     /**
-     * Getter for the "nbCashier" input
+     * @brief Getter for the "nbCashier" input
+     * @return integer - number of Cashier
      */
     int nbCashier() const;
 
+    
     /**
-     * Getter for the "average arrival time" input
+     * @brief Getter for the "average arrival time" input
+     * @return double - Time between two arrivals
      */
     double timeBetweenArrival() const;
 
     /**
-     * 
+     * @brief getter for the real length of the simulation
+     * @return double - real length
      */
     double realLength() const;
 
+    /**
+     * @brief getter of the number of clients served by the Bank
+     * @return int - number of clients served
+     */
     int nbClientsServed() const;
 
+    /**
+     * @brief Getter of the reference of the waitingLine
+     * @return WaitingLine& - reference of the waitingLing
+     */
     WaitingLine& waitingLine();
 
+    /**
+     * @brief Getter of the first free cashier in the Bank
+     * @return Cashier* - a Cashier
+     */
     Cashier* firstFree();
 
+    /**
+     * @brief Add a client to the waitingLine
+     * @param client
+     * @return (void)
+     */
     void addToLine(Client* client);
 
+    /**
+     * @brief Get the first client in the waiting List
+     * @return Client* - a client
+     */
     Client* getWaitingClient();
 
+    /**
+     * @brief get the next Arrival Time
+     * @return double - Arrival Time
+     */
     double computeNextArrivalTime();
 
+    /**
+     * @brief Display the data of the simulation, such as the length of th simulation, the occupation of each cashier, ...
+     * @return (void)
+     */
     void displaySimulationDatas();
 
+    /**
+     * @brief Set the real length of the simulation
+     * @param hour 
+     * @return (void)
+     */
     void setRealLength(double hour);
 
 };
 
+
+/**
+ * @brief Exception raised when the number of averageServiceTime isnt the same as the number of Cashier
+ * @author 
+ * @since Sat Sep 17 2022
+ */
 class InvalidTimeNumberException : public std::exception {
     public:
 
