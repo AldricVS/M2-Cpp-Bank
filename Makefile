@@ -14,6 +14,12 @@ INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
 CPPFLAGS ?= $(INC_FLAGS) -MMD -MP
 
+# Run doxygen on the src file and create a symlink of the 
+# "index.html" in the "doc" directory
+doc:
+	doxygen Doxyfile
+	ln -sf "$(PWD)/doc/html/index.html" "$(PWD)/doc"
+
 bank_simulation: create_folders $(OBJS)
 	g++ $(filter-out $(MAINS), $(OBJS)) $(BUILD_DIR)/src/bank_simulation.cpp.o -o $(BIN_DIR)/bank_simulation $(LDFLAGS)
 
@@ -31,7 +37,9 @@ create_folders:
 	@mkdir -p $(BIN_DIR)
 	@mkdir -p $(BUILD_DIR)
 
-.PHONY: clean
+.PHONY: clean doc
+
+all: doc bank_simulation
 
 clean:
 	$(RM) -r $(BUILD_DIR)
