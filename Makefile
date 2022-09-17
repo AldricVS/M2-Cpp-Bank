@@ -14,6 +14,8 @@ INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
 CPPFLAGS ?= $(INC_FLAGS) -MMD -MP
 
+all: doc bank_simulation testBank testInput
+
 # Run doxygen on the src file and create a symlink of the 
 # "index.html" in the "doc" directory
 doc:
@@ -39,7 +41,7 @@ create_folders:
 
 .PHONY: clean doc
 
-all: doc bank_simulation
+default: doc bank_simulation
 
 clean:
 	$(RM) -r $(BUILD_DIR)
