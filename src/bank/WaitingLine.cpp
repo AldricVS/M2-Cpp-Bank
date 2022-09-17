@@ -66,5 +66,9 @@ Client* WaitingLine::removeFirst()
 
     updateLengthAttributes();
 
+    // When removing client, we must also update the waiting time (that the "addClient" operation does not)
+    double waitingDuration = _bank->hour() - client->arrivalTime();
+    _totalWaitingTime += waitingDuration;
+
     return client;
 }
