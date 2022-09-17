@@ -13,7 +13,6 @@ void ClientDeparture::execute()
 {
     // remove client
     // update realLength
-    cout << "departure : " << hour() << endl;
     delete _client;
     // delete does not set the cashier's _client pointer to null
     _cashier->free();
@@ -21,7 +20,6 @@ void ClientDeparture::execute()
     WaitingLine& waitingLine = _bank->waitingLine();
     if (waitingLine.isEmpty())
     {
-        cout << "Wait" << endl;
         _cashier->wait();
     }
     else{

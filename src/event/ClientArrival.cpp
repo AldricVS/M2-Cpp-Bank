@@ -12,7 +12,6 @@ ClientArrival::~ClientArrival()
 
 void ClientArrival::execute()
 {
-    cout << "arrival : " << hour() << endl;
     Client* client = new Client(hour());
     Cashier* firstFreeCashier = _bank->firstFree();
     // manage client depending if a cashier is free or not
@@ -21,7 +20,6 @@ void ClientArrival::execute()
         firstFreeCashier->serve(client);
     }
     else{
-        cout << "Client added to line " << client->arrivalTime() << endl;
         _bank->addToLine(client);
     }
     // calculation of the arrival of the next client
@@ -29,7 +27,6 @@ void ClientArrival::execute()
     double time = hour() + hpa;
     if(time < _bank->estimatedLength()){
         // create the new Arrival
-        cout << "Add client arrival for " << time << endl;
         ClientArrival* newArrival = new ClientArrival(*_bank, time);
         // add it to the simulation
         _bank->add(*newArrival);

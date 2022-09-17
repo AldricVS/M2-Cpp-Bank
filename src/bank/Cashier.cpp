@@ -57,7 +57,6 @@ void Cashier::serve(Client* client)
     // The service only begins when the client starts to be served,
     // so the departure event must be set at this moment, not the client arrival time
     double eventTime = _bank->hour() + servingTime;
-    cout << "Add client departure for " << eventTime << endl;
     ClientDeparture* newEvent = new ClientDeparture(*_bank, eventTime, *_client, *this); 
     _workingTime += servingTime;
     _bank->add(*newEvent);
