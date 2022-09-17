@@ -6,6 +6,11 @@
 #include "../bank/Cashier.h"
 #include "Event.h"
 
+/**
+ * @brief An event triggered when client is not served by a cashier anymore.
+ * The cashier will try to take another client if the waiting line is not empty.
+ * @since Fri Sep 09 2022
+ */
 class ClientDeparture : public Event
 {
 private:

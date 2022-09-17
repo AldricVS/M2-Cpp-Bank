@@ -4,7 +4,7 @@
 class SED;
 
 /**
- * @brief This class represents all the events that can happen during a SED simulation
+ * @brief This class represents all the events that can happen during a SED simulation.
  * @author 
  * @since Fri Sep 09 2022
  */
@@ -20,9 +20,7 @@ public:
     ~Event();
 
     /**
-     * @brief launch the scenario corresponding to the event we created. 
-     * @param 
-     * @return 
+     * @brief Launch the scenario corresponding to the event we created.
      */
     virtual void execute() = 0;
 

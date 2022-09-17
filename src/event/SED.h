@@ -6,7 +6,7 @@
 #include "Event.h"
 
 /**
- * @brief This class allow us to compare two events
+ * @brief This is a comparator between two events, used for kepping events in the right order in the set used by the SED class.
  * @author 
  * @since Fri Sep 09 2022
  */
@@ -56,7 +56,7 @@ public:
 
     /**
      * @brief Get the simulation time
-     * @return
+     * @return (double)
      */
     double hour();
 

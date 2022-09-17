@@ -4,6 +4,10 @@
 #include "../bank/Bank.h"
 #include "Event.h"
 
+/**
+ * @brief An event that create a client and manage it in the bank depending if a Cashier is free.
+ * @since Fri Sep 09 2022
+ */
 class ClientArrival : public Event
 {
 private:
@@ -14,10 +18,6 @@ public:
     ClientArrival(Bank& bank, double hour);
     ~ClientArrival();
 
-    /**
-     * @brief Create a cashier and manage it in the bank depending if a Cashier is free
-     * @return (void)
-     */
     void execute();
 
 };
